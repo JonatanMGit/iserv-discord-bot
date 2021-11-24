@@ -1,6 +1,5 @@
 export const config = {
-	"url": "https://iserv.eu/",
-	"port": 443,
+	"url": "https://fvsg-buende.de/",
 	username: "",
 	password: "",
 };
