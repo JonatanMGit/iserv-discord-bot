@@ -17,6 +17,7 @@
     "typeRoots": [
       "node_modules/@types"
     ],
-    "sourceMap": true
+    "sourceMap": true,
+    "removeComments": true
   }
 }

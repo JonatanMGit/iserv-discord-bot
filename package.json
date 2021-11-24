@@ -4,7 +4,14 @@
   "description": "A Discord Bot which shows usefull Data from Iserv",
   "main": "dist/index.js",
   "scripts": {
-    "test": "echo \"Error: no test specified\" && exit 1"
+    "test": "echo \"Error: no test specified\" && exit 1",
+    "start": "tsc && dist/index.js",
+    "build": "tsc",
+    "dev": "ts-node-dev src/index.ts --transpile-only",
+    "lint": "eslint src/**/*.ts",
+    "format": "eslint src/**/*.ts --fix",
+    "prettify": "prettier --write src/**/*.ts",
+    "prepublishOnly": "npm run format && npm run prettify && npm run build"
   },
   "keywords": [
     "discord",
