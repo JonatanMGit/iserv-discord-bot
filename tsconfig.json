@@ -18,6 +18,9 @@
       "node_modules/@types"
     ],
     "sourceMap": true,
-    "removeComments": true
+    "removeComments": true,
+    "resolveJsonModule": true,
+    "declaration": true,
+    "newLine": "LF"
   }
 }
