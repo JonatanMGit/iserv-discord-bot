@@ -15,8 +15,14 @@ for (const file of commandFiles) {
 	commands.push(command.data.toJSON());
 }
 
-client.once('ready', () => {
-	console.log('Ready!');
+client.on('ready', () => {
+	client.user.setActivity('mit Joe Biden', { type: 'PLAYING' });
+	console.log(
+		`Logged in as "${client.user.tag}" with the ID "${client.user.id}"\nCurrently in ${client.guilds.cache.size} servers:`,
+	);
+	client.guilds.cache.forEach((guild) => {
+		console.log(`${guild.name} | ${guild.id}`);
+	});
 });
 
 client.on('interactionCreate', async (interaction) => {
