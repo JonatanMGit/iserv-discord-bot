@@ -15,11 +15,12 @@ const options = {
 	},
 };
 // get Cookies from Iserv
-function updateCookies(saveCookies: boolean) {
+export function updateCookies(saveCookies: boolean) {
+	const cookie = fs.existsSync('data.json') ? JSON.parse(fs.readFileSync('data.json', 'utf-8')) : {};
 	// Check if cookies are saved cookies are valid
-	needle('get', process.env.iserv_url + 'iserv/', options)
+	needle('get', process.env.iserv_url + 'iserv/', { cookies: cookie })
 		.then(function (resp) {
-			if (resp.statusCode == 301) {
+			if (resp.statusCode == 302) {
 				process.env.iserv_debug && console.log('Cookies are invalid\nGetting new ones');
 				// incase they are invalid, get new cookies
 				needle('post', process.env.iserv_url + 'iserv/app/login', login, options)
@@ -28,7 +29,7 @@ function updateCookies(saveCookies: boolean) {
 							console.log('Unable to get cookies');
 							return false;
 						}
-						if (saveCookies === !false) {
+						if (saveCookies !== false) {
 							fs.writeFileSync('data.json', JSON.stringify(resp.cookies), 'utf-8');
 							console.log('Cookies saved');
 						}
