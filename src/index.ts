@@ -4,6 +4,8 @@ import * as fs from 'fs';
 import * as dotenv from 'dotenv';
 dotenv.config({ path: '././.env' });
 
+require('./bot/bot');
+
 // Login sourced from https://github.com/dunklesToast/IServ/blob/master/index.js
 const login = querystring.stringify({
 	_username: process.env.iserv_username,
@@ -90,6 +92,3 @@ async function getSubstitutionRaw() {
 	process.env.iserv_console && console.log(a);
 	return await a;
 }
-getCookies(true).then((a) => {
-	console.log(a);
-});
